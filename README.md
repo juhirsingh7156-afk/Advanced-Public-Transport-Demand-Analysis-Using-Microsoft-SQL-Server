@@ -6,6 +6,8 @@ An end-to-end advanced SQL Server analytics project designed to analyze public t
 
 The project simulates a public transportation company's operational database and uses advanced T-SQL techniques to transform raw operational data into actionable business insights.
 
+The synthetic dataset contains 3,840 trip records across 8 routes.
+
 ## Business Objective
 
 The primary objective is to help transportation management understand passenger demand, optimize vehicle allocation, monitor operational performance, and improve service efficiency through SQL-based analysis.
@@ -107,14 +109,15 @@ The project investigates:
 
 ## Performance Optimization
 
-SQL Server nonclustered indexes are implemented on frequently queried columns.
+SQL Server nonclustered indexes are implemented on frequently queried columns. To measure the effect, a route-level demand query (daily passengers and fare revenue for one route) was run before and after adding a covering index on `TripOperations (RouteID, DateKey)` that includes `PassengerCount` and `FareRevenue`. The BEFORE run was forced to scan the full table.
 
-Query performance is evaluated through:
+| Metric | Before index | After index |
+|---|---|---|
+| Logical reads (`TripOperations`) | 37 | 5 |
+| Elapsed time | 3 ms | 1 ms |
+| CPU time | 0 ms | 0 ms |
 
-- Logical reads
-- CPU time
-- Elapsed time
-- Actual execution plans
+The covering index reduced logical reads by about 86%. With only 3,840 trip records the absolute times are tiny, so logical reads are the more reliable measure, and the benefit would grow with a larger dataset.
 
 ## Business Recommendations
 
@@ -135,13 +138,22 @@ It is an educational and portfolio demonstration, not an analysis of actual publ
 
 Year-over-year analysis requires an extended dataset covering multiple years.
 
+
 ## Project Execution
 
-Execute the SQL scripts in the documented dependency order provided in this repository.
+Run the scripts in this order in SQL Server Management Studio (SSMS):
+
+1. `01_database_setup.sql`: creates the database.
+2. `02_table_creation.sql`: creates tables, keys and constraints.
+3. `03_data_generation.sql`: generates the synthetic data.
+4. `04_data_quality_cleaning.sql`: runs data cleaning and validation.
+5. `05_views_and_functions.sqll`: creates indexes, views, functions and stored procedures.
+6. `06_final_business_insights.sql`: runs the business analysis queries.
+
+Requires Microsoft SQL Server 2019 or later and permission to create databases.
 
 ## Author
-
-SQL Data Analyst Portfolio Project
+**name** juhi Singh
 
 **Domain:** Transportation Analytics
 
