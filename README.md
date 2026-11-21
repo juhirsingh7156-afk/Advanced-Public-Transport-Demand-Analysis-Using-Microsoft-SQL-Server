@@ -147,13 +147,15 @@ Run the scripts in this order in SQL Server Management Studio (SSMS):
 2. `02_table_creation.sql`: creates tables, keys and constraints.
 3. `03_data_generation.sql`: generates the synthetic data.
 4. `04_data_quality_cleaning.sql`: runs data cleaning and validation.
-5. `05_views_and_functions.sql`: creates views and functions.`: creates indexes, views, functions and stored procedures.
-6. `07_performance_demo.sql`: compares a route demand query before and after a covering index.
-Developed and tested on SQL Server Express and permission to create databases.
+5. `05_views_and_functions.sql`: creates views and functions.
+6. `06_final_business_insights.sql`: runs the business analysis queries.
+7. `07_performance_demo.sql`: compares a route demand query before and after a covering index.
+
+Developed and tested on Microsoft SQL Server Express. Requires permission to create databases.
 
 ## Author
-
 **Juhi Singh**
+
 Aspiring Data Analyst | LinkedIn: linkedin.com/juhi-singh-89398b442 | GitHub: github.com/juhirsingh7156-afk
 
 **Domain:** Transportation Analytics
