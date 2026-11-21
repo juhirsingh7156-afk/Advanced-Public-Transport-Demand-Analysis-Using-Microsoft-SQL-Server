@@ -10,6 +10,12 @@ The project simulates a public transportation company's operational database and
 
 The primary objective is to help transportation management understand passenger demand, optimize vehicle allocation, monitor operational performance, and improve service efficiency through SQL-based analysis.
 
+## Key findings
+
+Analysis of the synthetic dataset (3,840 trip records across 8 routes):
+
+- **Top revenue route:** Nigdi-Hadapsar generated 4,391,730 in fare revenue, 17.8% of total revenue.
+
 ## Technology Stack
 
 - Microsoft SQL Server
